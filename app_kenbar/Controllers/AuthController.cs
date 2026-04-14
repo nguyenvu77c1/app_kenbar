@@ -128,8 +128,12 @@ namespace Kenbar.Api.Controllers
                         .FirstOrDefaultAsync(x => x.UserId == user.Id);
 
                     if (profile != null)
-                    {
-                        profile.FullName = request.FullName.Trim();
+                    { 
+                        
+                        profile.FullName = request.FullName.Trim();  
+
+
+
                     }
                 }
             }
