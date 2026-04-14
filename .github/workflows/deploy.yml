@@ -1,0 +1,35 @@
+name: Deploy to AWS Elastic Beanstalk
+
+on:
+  push:
+    branches:
+      - dev
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::838775536396:role/github-actions-eb-deploy
+          aws-region: ap-southeast-2
+
+      - name: Zip source
+        run: zip -r deploy.zip .
+
+      - name: Deploy to Elastic Beanstalk
+        uses: einaregilsson/beanstalk-deploy@v22
+        with:
+          application_name: app-kenbar-api
+          environment_name: App-kenbar-api-env
+          region: ap-southeast-2
+          deployment_package: deploy.zip
