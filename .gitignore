@@ -1,0 +1,33 @@
+## Build
+bin/
+obj/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+
+## Logs
+*.log
+
+## Publish
+Properties/PublishProfiles/
+
+## App settings (tránh lộ config local)
+appsettings.Development.json
+appsettings.Staging.json
+
+## Environment
+.env
+.env.*
+
+## Rider / VSCode (nếu có)
+.idea/
+.vscode/
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Test
+TestResults/

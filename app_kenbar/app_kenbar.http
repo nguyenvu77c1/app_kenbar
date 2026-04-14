@@ -1,0 +1,6 @@
+@app_kenbar_HostAddress = http://localhost:5251
+
+GET {{app_kenbar_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
