@@ -23,13 +23,9 @@ jobs:
           role-to-assume: arn:aws:iam::838775536396:role/github-actions-eb-deploy
           aws-region: ap-southeast-2
 
-      - name: Zip source
-        run: zip -r deploy.zip .
-
       - name: Deploy to Elastic Beanstalk
-        uses: einaregilsson/beanstalk-deploy@v22
+        uses: aws-actions/aws-elasticbeanstalk-deploy@v1.0.0
         with:
-          application_name: app-kenbar-api
-          environment_name: App-kenbar-api-env
-          region: ap-southeast-2
-          deployment_package: deploy.zip
+          aws-region: ap-southeast-2
+          application-name: app-kenbar-api
+          environment-name: App-kenbar-api-env
